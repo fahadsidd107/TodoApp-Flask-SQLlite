@@ -28,8 +28,8 @@ def hello_world():
         db.session.commit()
     all_todo = Todo.query.all()
     return render_template("index.html" , all_todo = all_todo)
-    
 
+   
 # @app.route("/show")
 # def products():
 #     all_todo = Todo.query.all()
