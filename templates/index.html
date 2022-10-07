@@ -1,67 +1,58 @@
 {% extends 'base.html'%}
- 
- {% block body %}
-  <div class="container my-5">
-      <h1>Add a todo</h1>
-      <form action="/" method="POST">
-        <div class="mb-3">
-          <label for="tname" class="form-label">Todo Title</label>
-          <input
-            type="text"
-            class="form-control"
-            name="title"
-            id="tname"
-            aria-describedby="emailHelp"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="tdes" class="form-label">Todo Description</label>
-          <input type="text" name="des" class="form-control" id="tdes" />
-        </div>
-        <button type="submit" class="btn btn-dark">Submit</button>
-      </form>
+
+{% block body %}
+<div class="container my-5">
+  <h1>Add a todo</h1>
+  <form action="/" method="POST">
+    <div class="mb-3">
+      <label for="tname" class="form-label">Todo Title</label>
+      <input type="text" class="form-control" name="title" id="tname" aria-describedby="emailHelp" />
     </div>
-
-    <div class="container">
-      <h1>My Todos</h1>
-
-            {% if all_todo|length ==0 %}
-            <div class="alert alert-dark my-5" role="alert">
-                No todos found—Add todos!
-              </div>
-            {% else %}
-          {% for todo in all_todo %}
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Title</th>
-                <th scope="col">Description</th>
-                <th scope="col">Time</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-          <tr>
-            <!-- <th scope="row">{{ todo.sno }}</th> -->
-            <th scope="row">{{ loop.index }}</th>
-            <td>{{ todo.title }}</td>
-            <td>{{ todo.des }}</td>
-            <td>{{ todo.date_created }}</td>
-            <td>
-                <a href="/update/{{todo.sno}}"  type="button" class="btn btn-outline-dark btn-sm mx-1">Update</a>
-                <a href="/delete/{{todo.sno}}"  type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</a>
-            </td>
-          </tr>
-        </tbody>
-    </table>
-          {% endfor %}
-          {% endif %}
+    <div class="mb-3">
+      <label for="tdes" class="form-label">Todo Description</label>
+      <input type="text" name="des" class="form-control" id="tdes" />
     </div>
+    <button type="submit" class="btn btn-dark">Submit</button>
+  </form>
+</div>
 
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-      crossorigin="anonymous"
-    ></script>
-    {% endblock %}
+<div class="container">
+  <h1>My Todos</h1>
+
+  {% if all_todo|length ==0 %}
+  <div class="alert alert-dark my-5" role="alert">
+    No todos found—Add todos!
+  </div>
+  {% else %}
+  {% for todo in all_todo %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Description</th>
+        <th scope="col">Time</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <!-- <th scope="row">{{ todo.sno }}</th> -->
+        <th scope="row">{{ loop.index }}</th>
+        <td>{{ todo.title }}</td>
+        <td>{{ todo.des }}</td>
+        <td>{{ todo.date_created }}</td>
+        <td>
+          <a href="/update/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Update</a>
+          <a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  {% endfor %}
+  {% endif %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+{% endblock %}
